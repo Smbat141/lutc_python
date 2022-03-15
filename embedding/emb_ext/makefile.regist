@@ -1,0 +1,17 @@
+######################################################################
+# Cygwin makefile that builds cregister.so. a dynamically loaded
+# C extension module (shareable), which is imported by register.py
+######################################################################
+
+PYLIB = /usr/include/x86_64-linux-gnu/python3.8
+PYINC = /usr/include/python3.8
+
+CMODS = cregister.so
+
+all: $(CMODS)
+
+cregister.so: cregister.c
+	gcc cregister.c -g -I$(PYINC) -shared -L$(PYLIB) -lpython3.8 -o $@ -fPIC
+
+clean:
+	rm -f *.pyc $(CMODS)

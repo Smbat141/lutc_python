@@ -1,0 +1,46 @@
+ue.put('[producer id=%d, count=%d]' % (idnum, msgnum))
+#
+#
+# def consumer(idnum):
+#     while True:
+#         time.sleep(0.1)
+#         try:
+#             data = dataQueue.get(block=False)
+#         except queue.Empty:
+#             pass
+#         else:
+#             with safeprint:
+#                 print('consumer', idnum, 'got =>', data)
+#
+#
+# if __name__ == '__main__':
+#     for i in range(numconsumers):
+#         thread.start_new_thread(consumer, (i,))
+#
+# for i in range(numproducers):
+#     thread.start_new_thread(producer, (i,))
+#     time.sleep(((numproducers - 1) * nummessages) + 1)
+#     print('Main thread exit.')
+#
+
+
+# from tkinter import Tk
+# from tkinter.messagebox import showinfo
+# win = Tk()
+# win.after(5500, lambda: showinfo('Popup', 'Spam!'))
+# win.mainloop()
+
+
+# import os
+#
+# exitstat = 0
+#
+#
+# def child():
+#     global exitstat
+#     exitstat += 1
+#     print('Hello from child', os.getpid(), exitstat)
+#     os._exit(exitstat)
+#     print('never reached')
+#
+# newpid =

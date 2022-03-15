@@ -1,0 +1,44 @@
+#!/usr/bin/python3
+"""
+Fetch an arbitrary file by FTP.  Anonymous FTP unless you pass a
+user=(name, pswd) tuple. Self-test FTPs a test file and site.
+"""
+import os
+
+from ftplib import FTP, error_perm  # socket-based FTP tools
+from os.path import exists  # file existence test
+
+
+def getfile(file, site, dir, user=(), *, verbose=True, refetch=False):
+    """
+    fetch a file by ftp from a site/directory
+    anonymous or real login, binary transfer
+    """
+    if exists(file) and not refetch:
+        if verbose: print(file, 'already fetched')
+    else:
+        if verbose: print('Downloading', file)
+        local = open(file, 'wb')  # local file of same name
+        try:
+            remote = FTP(site)  # connect to FTP site
+            remote.login(*user)  # anonymous=() or (name, pswd)
+            # remote.cwd(dir) # MY VERSION(skip this step when download from speedtest.tele2.net server)
+            remote.retrbinary('RETR ' + file, local.write, 1024)
+            remote.quit()
+        except error_perm:
+            local.close()
+            os.remove(local.name)
+            raise error_perm
+        finally:
+            local.close()  # close file no matter what
+        if verbose: print('Download done.')  # caller handles exceptions
+
+
+if __name__ == '__main__':
+    from getpass import getpass
+
+    file = '1MB.zip'
+    dir = '.'
+    site = 'speedtest.tele2.net'
+    user = ('anonymous', getpass('Pswd?'))
+    getfile(file, site, dir, user)

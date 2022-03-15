@@ -1,0 +1,40 @@
+   while True:
+#         time.sleep(zzz)
+#         msg = ('Spam %03d' % zzz).encode()
+#         os.write(pipeout, msg)
+#         zzz = (zzz + 1) % 5
+#
+#
+# def parent(pipein):
+#     while True:
+#         line = os.read(pipein, 32)
+#         print('Parent %d got [%s] at %s' % (os.getpid(), line, time.time()))
+#
+#
+# pipein, pipeout = os.pipe()
+# threading.Thread(target=child, args=(pipeout,)).start()
+# parent(pipein)
+
+
+# import os, sys
+#
+#
+# def spawn(prog, *args):
+#     stdinFd = sys.stdin.fileno()
+#     stdoutFd = sys.stdout.fileno()
+#     parentStdin, childStdout = os.pipe()
+#     childStdin, parentStdout = os.pipe()
+#     pid = os.fork()
+#
+#     if pid:
+#         os.close(childStdout)
+#         os.close(childStdin)
+#         os.dup2(parentStdin, stdinFd)
+#         os.dup2(parentStdout, stdoutFd)
+#     else:
+#         os.close(parentStdin)
+#         os.close(parentStdout)
+#         os.dup2(childStdin, stdinFd)
+#         os.dup2(childStdout, stdoutFd)
+#         args = (prog,) + args
+#  

@@ -1,0 +1,52 @@
+        # shouldn't return
+#     else:
+#         print('Child is', pid)
+#         if input() == 'q': break
+
+
+# import _thread
+#
+#
+# def child(tid):
+#     print('Hello from thread', tid)
+#
+#
+# def parent():
+#     i = 0
+#     while True:
+#         i += 1
+#         _thread.start_new_thread(child, (i,))
+#         if input() == 'q': break
+#         print('Hello from parent')
+#
+#
+# parent()
+
+
+# import _thread as thread, time
+#
+#
+# def counter(myId, count):
+#     for i in range(count):
+#         time.sleep(1)
+#         mutex.acquire()
+#         print('[%s] => %s' % (myId, i))  # function run in threads
+#         mutex.release()
+#
+#
+# mutex = thread.allocate_lock()
+# for i in range(5):
+#     thread.start_new_thread(counter, (i, 5))  # spawn 5 threads
+# # each thread loops 5 times
+# print('Main thread exiting.')  # don't exit too early
+#
+# time.sleep(6)
+
+
+# import _thread as thread
+#
+# stdoutmutex = thread.allocate_lock()
+# exitmutexes = [thread.allocate_lock() for i in range(10)]
+#
+#
+# def cou

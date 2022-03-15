@@ -1,0 +1,2 @@
+::::::::::::::::::::textpak=>/home/collab06/projects/lutc_python/custom_tkinter/chapter_10/text_packer_2.txt
+I am from text_packer_2.txt

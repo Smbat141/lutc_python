@@ -1,0 +1,39 @@
+nter(myId, count):
+#     for i in range(count):
+#         stdoutmutex.acquire()
+#         print('[%s] => %s' % (myId, i))
+#         stdoutmutex.release()
+#     exitmutexes[myId].acquire()
+#
+#
+# # signal main thread
+# for i in range(10):
+#     thread.start_new_thread(counter, (i, 100))
+#
+# for mutex in exitmutexes:
+#     print(mutex.locked())
+#     while not mutex.locked(): pass
+# print('Main thread exiting.')
+
+# import _thread as thread, time
+#
+# stdoutmutex = thread.allocate_lock()
+# numthreads = 2
+# exitmutexes = [thread.allocate_lock() for i in range(numthreads)]
+#
+#
+# def counter(myId, count, mutex):
+#     for i in range(count):
+#         time.sleep(1 / (myId + 1))
+#         with mutex:
+#             print('[%s] => %s' % (myId, i))
+#     exitmutexes[myId].acquire()
+#
+#
+# # shared object passed in
+# # diff fractions of second
+# # auto acquire/release: with
+# # global: signal main thread
+# for i in range(numthreads):
+#     thread.start_new_thread(counter, (i, 5, stdoutmutex))
+# while

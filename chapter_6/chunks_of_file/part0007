@@ -1,0 +1,51 @@
+d
+# wait for thread exits
+
+# import threading
+#
+#
+# def action(i):
+#     print(i ** 32)
+#
+#
+# threading.Thread(target=action, args=(5,)).start()
+
+# import threading, time
+#
+# count = 0
+#
+#
+# def adder():
+#     global count
+#     count = count + 1
+#     time.sleep(0.5)
+#     count = count + 1
+#     # update a shared name in global scope
+#     # threads share object memory and global names
+#
+#
+# threads = []
+# for i in range(100):
+#     thread = threading.Thread(target=adder, args=())
+#     thread.start()
+#     threads.append(thread)
+# for thread in threads: thread.join()
+# print(count)
+# "producer and consumer threads communicating with a shared queue"
+# numconsumers = 2
+# numproducers = 4
+# nummessages = 4
+#
+# import _thread as thread, queue, time
+#
+#
+# safeprint = thread.allocate_lock()
+# # else prints may overlap
+# dataQueue = queue.Queue()
+#
+#
+# # shared global, infinite size
+# def producer(idnum):
+#     for msgnum in range(nummessages):
+#         time.sleep(idnum)
+#         dataQue

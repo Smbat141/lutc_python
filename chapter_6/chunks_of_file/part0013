@@ -1,0 +1,40 @@
+.flush()
+#     # make sure it's sent now or else process blocks
+
+
+
+
+# import os, time, sys
+#
+# fifoname = 'pipe'
+#
+#
+# def child():
+#     pipeout = os.open(fifoname, os.O_WRONLY)
+#     zzz = 0
+#     while True:
+#         time.sleep(zzz)
+#         msg = ('Spam %03d\n' % zzz).encode()
+#         os.write(pipeout, msg)
+#         zzz = (zzz + 1) % 5
+#
+# # must open same name
+# # open fifo pipe file as fd
+# # binary as opened here
+# def parent():
+#     pipein = open(fifoname, 'r')
+#     # open fifo as text file object
+#     while True:
+#         line = pipein.readline()[:-1]
+#         # blocks until data sent
+#         print('Parent %d got "%s" at %s' % (os.getpid(), line, time.time()))
+#
+#
+# if __name__ == '__main__':
+#     if not os.path.exists(fifoname):
+#         os.mkfifo(fifoname)
+#
+#     if len(sys.argv) == 1:
+#         parent()
+#     else:
+#         child()

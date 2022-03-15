@@ -1,0 +1,14 @@
+# build environ extension from SWIG generated code
+
+PYLIB = /usr/include/x86_64-linux-gnu/python3.8
+PYINC = /usr/include/python3.8
+SWIG  = /usr/bin/swig
+
+_environ.so: environ_wrap.c
+	gcc environ_wrap.c -g -I$(PYINC) -L$(PYLIB) -lpython3.8 -shared -o $@ -fPIC
+
+environ_wrap.c: environ.i
+	$(SWIG) -python environ.i
+
+clean:
+	rm -f *.o *.so *.pyc core environ_wrap.c environ.py

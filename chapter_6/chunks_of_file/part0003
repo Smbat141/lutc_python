@@ -1,0 +1,43 @@
+")
+#         os._exit(0)  # in parent: continue
+# print('Main process exiting.')
+# import os, time
+# x = 999
+# # Create a child process
+# # using os.fork() method
+# print(x)
+# pid = os.fork()
+#
+# # pid greater than 0 represents
+# # the parent process
+# if pid > 0:
+#     print("I am parent process:")
+#     print("Process ID:", os.getpid())
+#     print("Child's process ID:", pid)
+#     os._exit(0)
+# # pid equal to 0 represnts
+# # the created child process
+# else:
+#     time.sleep(5)
+#     print("\nI am child process:")
+#     print("Process ID:", os.getpid())
+#     print("Parent's process ID:", os.getppid())
+#     os._exit(0)
+
+# If any error occured while
+# using os.fork() method
+# OSError will be raised
+
+
+# import os
+#
+# parm = 0
+# while True:
+#     parm += 1
+#     pid = os.fork()
+#     print('*********', pid)
+#     if pid == 0:
+#         # copy process
+#         os.execlp('python3', 'python', './child.py', str(parm))  # overlay program
+#         assert False, 'error starting program'
+# 

@@ -1,0 +1,39 @@
+###########################################################################
+# Use SWIG to integrate the number.h C++ class for use in Python programs.
+# Update: name "_number.so" matters, because shadow class imports _number.
+# Update: the "-shadow" swig command line arg is deprecated (on by default).
+# Update: swig no longer creates a .doc file to rm here (ancient history).
+###########################################################################
+
+PYLIB = /usr/include/x86_64-linux-gnu/python3.8
+PYINC = /usr/include/python3.8
+SWIG  = /usr/bin/swig
+
+all: _number.so number.py
+
+# wrapper + real class
+_number.so: number_wrap.o number.o
+	g++ -shared number_wrap.o number.o -L$(PYLIB) -lpython3.8 -o $@
+
+# generated class wrapper module(s)
+number_wrap.o: number_wrap.cxx number.h
+	g++ number_wrap.cxx -c -g -I$(PYINC) -fPIC
+
+number_wrap.cxx: number.i
+	$(SWIG) -c++ -python number.i
+
+number.py: number.i
+	$(SWIG) -c++ -python number.i
+
+# wrapped C++ class code
+number.o: number.cxx number.h
+	g++ number.cxx -c -g -Wno-deprecated
+
+# non Python test
+cxxtest:
+	g++ main.cxx number.cxx -Wno-deprecated
+
+clean:
+	rm -f *.pyc *.o *.so core a.out
+force:
+	rm -f *.pyc *.o *.so core a.out number_wrap.cxx number.py
